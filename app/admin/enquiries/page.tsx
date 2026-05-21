@@ -20,7 +20,7 @@ export default function EnquiriesAdmin() {
   const [items, setItems] = useState<T[]>([]);
   const [selected, setSelected] = useState<T | null>(null);
 
-  async function load() { const res = await fetch('/api/admin/enquiries'); setItems(await res.json()); }
+  async function load() { const res = await fetch('/api/admin/enquiries'); const data = await res.json(); setItems(Array.isArray(data) ? data : []); }
   useEffect(() => { load(); }, []);
 
   return (

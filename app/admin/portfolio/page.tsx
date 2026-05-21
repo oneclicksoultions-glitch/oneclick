@@ -15,7 +15,7 @@ export default function PortfolioAdmin() {
   const [servicesText, setServicesText] = useState('');
   const [saving, setSaving] = useState(false);
 
-  async function load() { const res = await fetch('/api/admin/portfolio'); setItems(await res.json()); }
+  async function load() { const res = await fetch('/api/admin/portfolio'); const data = await res.json(); setItems(Array.isArray(data) ? data : []); }
   useEffect(() => { load(); }, []);
 
   function openAdd() { setForm(EMPTY); setServicesText(''); setModal('add'); }

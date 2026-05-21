@@ -17,7 +17,8 @@ export default function TestimonialsAdmin() {
 
   async function load() {
     const res = await fetch('/api/admin/testimonials');
-    setItems(await res.json());
+    const data = await res.json();
+    setItems(Array.isArray(data) ? data : []);
   }
   useEffect(() => { load(); }, []);
 

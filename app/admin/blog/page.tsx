@@ -14,7 +14,7 @@ export default function BlogAdmin() {
   const [form, setForm] = useState<Omit<T, 'id'>>(EMPTY);
   const [saving, setSaving] = useState(false);
 
-  async function load() { const res = await fetch('/api/admin/blog'); setItems(await res.json()); }
+  async function load() { const res = await fetch('/api/admin/blog'); const data = await res.json(); setItems(Array.isArray(data) ? data : []); }
   useEffect(() => { load(); }, []);
 
   function openAdd() { setForm(EMPTY); setModal('add'); }

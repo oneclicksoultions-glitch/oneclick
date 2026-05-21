@@ -16,7 +16,8 @@ export default function HeroAdmin() {
 
   async function load() {
     const [h, s] = await Promise.all([fetch('/api/admin/hero').then(r => r.json()), fetch('/api/admin/stats').then(r => r.json())]);
-    setHero(h); setStats(s);
+    setHero(h?.id ? h : null);
+    setStats(Array.isArray(s) ? s : []);
   }
   useEffect(() => { load(); }, []);
 
