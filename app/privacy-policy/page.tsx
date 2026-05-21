@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description: 'Read the OneClick Solutions privacy policy to understand how we collect, use, and protect your personal information.',
   keywords: ['OneClick Solutions privacy policy'],
   alternates: { canonical: 'https://oneclicksoultions.com.au/privacy-policy/' },
-  robots: { index: false, follow: false },
+  robots: { index: false, follow: true },
 };
 
 export default function PrivacyPolicyPage() {
