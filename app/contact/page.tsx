@@ -58,6 +58,7 @@ export default function ContactPage() {
             <div className="grid lg:grid-cols-5 gap-12">
               {/* Form */}
               <div className="lg:col-span-3">
+                <h2 className="text-xl font-700 text-gray-900 mb-6">Send Us a Message</h2>
                 {submitted ? (
                   <div className="bg-green-50 border border-green-200 rounded-2xl p-8 text-center">
                     <CheckCircle className="h-12 w-12 mx-auto mb-4" style={{ color: '#34A853' }} />
@@ -170,6 +171,7 @@ export default function ContactPage() {
 
               {/* Contact info */}
               <div className="lg:col-span-2 space-y-6">
+                <h2 className="text-xl font-700 text-gray-900 mb-6">Contact Information</h2>
                 <div className="bg-gray-50 rounded-2xl p-6 border border-gray-100">
                   <div className="flex items-start gap-4">
                     <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0" style={{ backgroundColor: '#EBF3FE' }}>
