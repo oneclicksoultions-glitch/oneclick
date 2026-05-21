@@ -54,7 +54,7 @@ export async function POST(req: NextRequest) {
     const adminEmail = process.env.ADMIN_GMAIL?.trim() || 'oneclicksoultions@gmail.com';
 
     // Send emails — use resend.com test domain if custom domain not verified
-    const fromAddress = 'OneClick Solutions <onboarding@resend.dev>';
+    const fromAddress = 'OneClick Solutions <noreply@oneclicksoultions.com.au>';
 
     try {
       await resend.emails.send({
