@@ -44,7 +44,12 @@ const nextConfig = {
         headers: [
           {
             key: 'Link',
-            value: '</sitemap.xml>; rel="sitemap", </robots.txt>; rel="robots"',
+            value: [
+              '</sitemap.xml>; rel="sitemap"',
+              '</robots.txt>; rel="robots"',
+              '</.well-known/api-catalog>; rel="api-catalog"',
+              '</api/markdown>; rel="alternate"; type="text/markdown"',
+            ].join(', '),
           },
         ],
       },
