@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { Search, MousePointerClick, Share2, Globe, FileText, Mail, ChartBar as BarChart2, Smartphone, ArrowRight } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import JsonLd from '@/components/JsonLd';
 
 export const metadata: Metadata = {
   title: 'Digital Marketing Services Australia | SEO, Ads, Social & More',
@@ -78,9 +79,46 @@ const services = [
   },
 ];
 
+const servicesPageSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  '@id': 'https://oneclicksoultions.com.au/services/#webpage',
+  url: 'https://oneclicksoultions.com.au/services/',
+  name: 'Digital Marketing Services Australia | SEO, Ads, Social & More',
+  description:
+    'Full-suite digital marketing services for Australian businesses — SEO, Google Ads, Social Media, Web Design, Email Marketing, Content, Analytics & App Marketing.',
+  isPartOf: { '@id': 'https://oneclicksoultions.com.au/#website' },
+  provider: { '@id': 'https://oneclicksoultions.com.au/#organization' },
+  breadcrumb: {
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://oneclicksoultions.com.au/' },
+      { '@type': 'ListItem', position: 2, name: 'Services', item: 'https://oneclicksoultions.com.au/services/' },
+    ],
+  },
+};
+
+const servicesListSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Digital Marketing Services by OneClick Solutions',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Search Engine Optimisation (SEO)', url: 'https://oneclicksoultions.com.au/services/seo/' },
+    { '@type': 'ListItem', position: 2, name: 'Google Ads (PPC)', url: 'https://oneclicksoultions.com.au/services/google-ads/' },
+    { '@type': 'ListItem', position: 3, name: 'Social Media Marketing', url: 'https://oneclicksoultions.com.au/services/social-media/' },
+    { '@type': 'ListItem', position: 4, name: 'Web Design & Development', url: 'https://oneclicksoultions.com.au/services/web-design/' },
+    { '@type': 'ListItem', position: 5, name: 'Content Marketing', url: 'https://oneclicksoultions.com.au/services/content-marketing/' },
+    { '@type': 'ListItem', position: 6, name: 'Email Marketing', url: 'https://oneclicksoultions.com.au/services/email-marketing/' },
+    { '@type': 'ListItem', position: 7, name: 'Analytics & Reporting', url: 'https://oneclicksoultions.com.au/services/analytics/' },
+    { '@type': 'ListItem', position: 8, name: 'App Marketing', url: 'https://oneclicksoultions.com.au/services/app-marketing/' },
+  ],
+};
+
 export default function ServicesPage() {
   return (
     <>
+      <JsonLd data={servicesPageSchema} />
+      <JsonLd data={servicesListSchema} />
       <Navbar />
       <main>
         <section className="pt-28 pb-16 lg:pt-36 lg:pb-24 bg-white">

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import ServicePageLayout from '@/components/ServicePageLayout';
+import JsonLd from '@/components/JsonLd';
 
 export const metadata: Metadata = {
   title: 'SEO Agency Australia | Search Engine Optimisation Services',
@@ -8,9 +9,33 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://oneclicksoultions.com.au/services/seo/' },
 };
 
+const seoSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  '@id': 'https://oneclicksoultions.com.au/services/seo/#service',
+  name: 'Search Engine Optimisation (SEO)',
+  description:
+    'Technical SEO, content strategy, and link building for Australian businesses. We help brands rank on page one for competitive keywords and maintain those rankings long-term.',
+  url: 'https://oneclicksoultions.com.au/services/seo/',
+  provider: { '@id': 'https://oneclicksoultions.com.au/#organization' },
+  areaServed: { '@type': 'Country', name: 'Australia' },
+  serviceType: 'Search Engine Optimisation',
+  category: 'Digital Marketing',
+  breadcrumb: {
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://oneclicksoultions.com.au/' },
+      { '@type': 'ListItem', position: 2, name: 'Services', item: 'https://oneclicksoultions.com.au/services/' },
+      { '@type': 'ListItem', position: 3, name: 'SEO', item: 'https://oneclicksoultions.com.au/services/seo/' },
+    ],
+  },
+};
+
 export default function SEOPage() {
   return (
-    <ServicePageLayout
+    <>
+      <JsonLd data={seoSchema} />
+      <ServicePageLayout
       title="Search Engine Optimisation"
       subtitle="Rank Higher. Get Found. Grow Faster."
       description="Our SEO strategies are built for Australian businesses that want real, sustainable organic growth. We combine technical expertise, content strategy, and authority building to get you on page one — and keep you there."
@@ -43,5 +68,6 @@ export default function SEOPage() {
         { q: 'How do you measure SEO success?', a: 'We track organic traffic, keyword rankings, conversion rates, and revenue attributed to organic search. You receive detailed monthly reports with clear KPIs.' },
       ]}
     />
+    </>
   );
 }

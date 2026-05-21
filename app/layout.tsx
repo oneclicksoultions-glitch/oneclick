@@ -2,6 +2,7 @@ import './globals.css';
 import type { Metadata } from 'next';
 import { Roboto } from 'next/font/google';
 import { SpeedInsights } from '@vercel/speed-insights/next';
+import JsonLd from '@/components/JsonLd';
 
 const roboto = Roboto({
   subsets: ['latin'],
@@ -44,6 +45,88 @@ export const metadata: Metadata = {
   },
 };
 
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': ['Organization', 'LocalBusiness', 'ProfessionalService'],
+  '@id': 'https://oneclicksoultions.com.au/#organization',
+  name: 'OneClick Solutions',
+  alternateName: 'OneClick Solutions Digital Marketing',
+  url: 'https://oneclicksoultions.com.au/',
+  logo: {
+    '@type': 'ImageObject',
+    url: 'https://oneclicksoultions.com.au/logo.png',
+    width: 200,
+    height: 60,
+  },
+  image: 'https://oneclicksoultions.com.au/logo.png',
+  description:
+    'OneClick Solutions is a full-service digital marketing agency in Melbourne, Australia offering SEO, Google Ads, Social Media Marketing, Web Design, Content Marketing, and more.',
+  telephone: '+61390000000',
+  email: 'hello@oneclicksoultions.com.au',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Level 5, 123 Collins Street',
+    addressLocality: 'Melbourne',
+    addressRegion: 'VIC',
+    postalCode: '3000',
+    addressCountry: 'AU',
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: -37.8136,
+    longitude: 144.9631,
+  },
+  openingHoursSpecification: [
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+      opens: '09:00',
+      closes: '18:00',
+    },
+  ],
+  areaServed: {
+    '@type': 'Country',
+    name: 'Australia',
+  },
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Digital Marketing Services',
+    itemListElement: [
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Search Engine Optimisation (SEO)' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Google Ads (PPC)' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Social Media Marketing' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Web Design & Development' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Content Marketing' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Email Marketing' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Analytics & Reporting' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'App Marketing' } },
+    ],
+  },
+  aggregateRating: {
+    '@type': 'AggregateRating',
+    ratingValue: '4.9',
+    reviewCount: '500',
+    bestRating: '5',
+  },
+  sameAs: [
+    'https://www.facebook.com/oneclicksoultions',
+    'https://www.linkedin.com/company/oneclicksoultions',
+    'https://www.instagram.com/oneclicksoultions',
+  ],
+  foundingDate: '2014',
+  numberOfEmployees: { '@type': 'QuantitativeValue', value: 20 },
+  knowsAbout: [
+    'SEO',
+    'Google Ads',
+    'Social Media Marketing',
+    'Web Design',
+    'Content Marketing',
+    'Email Marketing',
+    'Digital Marketing',
+    'Analytics',
+  ],
+};
+
 export default function RootLayout({
   children,
 }: {
@@ -52,6 +135,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={roboto.className}>
+        <JsonLd data={organizationSchema} />
         {children}
         <SpeedInsights />
       </body>

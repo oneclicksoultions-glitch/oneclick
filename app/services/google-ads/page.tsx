@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import ServicePageLayout from '@/components/ServicePageLayout';
+import JsonLd from '@/components/JsonLd';
 
 export const metadata: Metadata = {
   title: 'Google Ads Management Australia | PPC Agency | OneClick Solutions',
@@ -8,9 +9,32 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://oneclicksoultions.com.au/services/google-ads/' },
 };
 
+const googleAdsSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  '@id': 'https://oneclicksoultions.com.au/services/google-ads/#service',
+  name: 'Google Ads (PPC)',
+  description: 'Data-driven Google Ads campaigns across Search, Display, and Performance Max. We manage millions in ad spend annually with a focus on cost-per-lead and ROAS.',
+  url: 'https://oneclicksoultions.com.au/services/google-ads/',
+  provider: { '@id': 'https://oneclicksoultions.com.au/#organization' },
+  areaServed: { '@type': 'Country', name: 'Australia' },
+  serviceType: 'Google Ads Management',
+  category: 'Digital Marketing',
+  breadcrumb: {
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://oneclicksoultions.com.au/' },
+      { '@type': 'ListItem', position: 2, name: 'Services', item: 'https://oneclicksoultions.com.au/services/' },
+      { '@type': 'ListItem', position: 3, name: 'Google Ads', item: 'https://oneclicksoultions.com.au/services/google-ads/' },
+    ],
+  },
+};
+
 export default function GoogleAdsPage() {
   return (
-    <ServicePageLayout
+    <>
+      <JsonLd data={googleAdsSchema} />
+      <ServicePageLayout
       title="Google Ads (PPC)"
       subtitle="Instant Visibility. Qualified Leads. Measurable ROI."
       description="Our Google Ads management service is designed for Australian businesses that want immediate, measurable results. We build, manage and optimise campaigns that turn ad spend into revenue — not just clicks."
@@ -43,5 +67,6 @@ export default function GoogleAdsPage() {
         { q: 'What industries do you manage Google Ads for?', a: 'We manage campaigns across all industries including healthcare, legal, real estate, e-commerce, trades, professional services, and more.' },
       ]}
     />
+    </>
   );
 }

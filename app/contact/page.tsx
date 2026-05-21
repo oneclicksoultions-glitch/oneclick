@@ -5,6 +5,64 @@ import { useState } from 'react';
 import { Phone, Mail, MapPin, Clock, Send, CircleCheck as CheckCircle } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import JsonLd from '@/components/JsonLd';
+
+const contactPageSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ContactPage',
+  '@id': 'https://oneclicksoultions.com.au/contact/#webpage',
+  url: 'https://oneclicksoultions.com.au/contact/',
+  name: 'Contact OneClick Solutions — Free Strategy Consultation',
+  description:
+    'Get in touch with OneClick Solutions for a free 30-minute digital marketing strategy consultation. No lock-in contracts.',
+  isPartOf: { '@id': 'https://oneclicksoultions.com.au/#website' },
+  breadcrumb: {
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://oneclicksoultions.com.au/' },
+      { '@type': 'ListItem', position: 2, name: 'Contact', item: 'https://oneclicksoultions.com.au/contact/' },
+    ],
+  },
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'How quickly will you respond to my enquiry?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'We respond to all enquiries within one business day. If you submit during business hours (Monday to Friday, 9am–6pm AEST), you will typically hear from us within a few hours.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Is the strategy consultation really free?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Yes, completely free and with no obligation. We believe in earning your trust by providing genuine value upfront. The consultation is a real working session — not a sales call.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Do you work with small businesses or only large companies?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'We work with businesses of all sizes across Australia. Our services are scalable, so whether your monthly marketing budget is $1,000 or $50,000, we can build a strategy that makes sense for your situation.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Which digital marketing services do you offer?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'We offer a full suite of digital marketing services including SEO, Google Ads, Social Media Marketing, Web Design, Content Marketing, Email Marketing, Analytics & Reporting, and App Marketing. Most clients use a combination of services for the best results.',
+      },
+    },
+  ],
+};
 
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
@@ -53,6 +111,8 @@ export default function ContactPage() {
   return (
     <>
       <link rel="canonical" href="https://oneclicksoultions.com.au/contact/" />
+      <JsonLd data={contactPageSchema} />
+      <JsonLd data={faqSchema} />
       <Navbar />
       <main>
         <section className="pt-28 pb-16 lg:pt-36 lg:pb-24 bg-white">
