@@ -1,4 +1,12 @@
+import type { Metadata } from 'next';
 import ServicePageLayout from '@/components/ServicePageLayout';
+
+export const metadata: Metadata = {
+  title: 'SEO Agency Australia | Search Engine Optimisation Services',
+  description: 'Rank higher on Google with OneClick Solutions\' expert SEO services. Technical SEO, link building, local SEO & content strategy for Australian businesses.',
+  keywords: ['SEO agency Australia', 'search engine optimisation Australia', 'local SEO Australia', 'SEO services Melbourne'],
+  alternates: { canonical: 'https://oneclicksoultions.com.au/services/seo/' },
+};
 
 export default function SEOPage() {
   return (

@@ -1,4 +1,12 @@
+import type { Metadata } from 'next';
 import ServicePageLayout from '@/components/ServicePageLayout';
+
+export const metadata: Metadata = {
+  title: 'App Marketing Australia | App Store Optimisation & User Acquisition | OneClick Solutions',
+  description: 'Grow your app downloads and retention with OneClick Solutions. Expert ASO, Apple Search Ads, Google UAC & in-app engagement strategies for Australian app businesses.',
+  keywords: ['app marketing Australia', 'app store optimisation Australia', 'ASO agency Australia', 'app user acquisition Australia'],
+  alternates: { canonical: 'https://oneclicksoultions.com.au/services/app-marketing/' },
+};
 
 export default function AppMarketingPage() {
   return (

@@ -1,4 +1,12 @@
+import type { Metadata } from 'next';
 import ServicePageLayout from '@/components/ServicePageLayout';
+
+export const metadata: Metadata = {
+  title: 'Email Marketing Australia | Automation & Campaigns | OneClick Solutions',
+  description: 'Drive revenue with email marketing that converts. OneClick Solutions builds automated email sequences, newsletters & campaigns delivering $42 ROI per $1 spent for Australian businesses.',
+  keywords: ['email marketing Australia', 'email marketing agency Melbourne', 'email automation Australia', 'email campaigns Australia'],
+  alternates: { canonical: 'https://oneclicksoultions.com.au/services/email-marketing/' },
+};
 
 export default function EmailMarketingPage() {
   return (

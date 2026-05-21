@@ -1,4 +1,12 @@
+import type { Metadata } from 'next';
 import ServicePageLayout from '@/components/ServicePageLayout';
+
+export const metadata: Metadata = {
+  title: 'Google Ads Management Australia | PPC Agency | OneClick Solutions',
+  description: 'Get qualified leads fast with expert Google Ads management. OneClick Solutions runs high-ROI PPC campaigns for Australian businesses across Search, Display & Shopping.',
+  keywords: ['Google Ads management Australia', 'PPC agency Australia', 'Google Ads agency Melbourne', 'pay per click advertising Australia'],
+  alternates: { canonical: 'https://oneclicksoultions.com.au/services/google-ads/' },
+};
 
 export default function GoogleAdsPage() {
   return (

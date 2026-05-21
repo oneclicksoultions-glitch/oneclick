@@ -3,7 +3,11 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
+  title: 'Privacy Policy | OneClick Solutions',
+  description: 'Read the OneClick Solutions privacy policy to understand how we collect, use, and protect your personal information.',
+  keywords: ['OneClick Solutions privacy policy'],
   alternates: { canonical: 'https://oneclicksoultions.com.au/privacy-policy/' },
+  robots: { index: false, follow: false },
 };
 
 export default function PrivacyPolicyPage() {

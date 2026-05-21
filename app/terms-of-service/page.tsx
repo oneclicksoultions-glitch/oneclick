@@ -3,7 +3,11 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
+  title: 'Terms of Service | OneClick Solutions',
+  description: 'Read the OneClick Solutions terms of service governing the use of our digital marketing services.',
+  keywords: ['OneClick Solutions terms of service'],
   alternates: { canonical: 'https://oneclicksoultions.com.au/terms-of-service/' },
+  robots: { index: false, follow: false },
 };
 
 export default function TermsOfServicePage() {

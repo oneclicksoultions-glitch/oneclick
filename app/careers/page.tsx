@@ -5,8 +5,9 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: 'Careers | OneClick Solutions',
-  description: 'Join the OneClick Solutions team. We are hiring talented digital marketers, developers, and strategists in Melbourne, Australia.',
+  title: 'Digital Marketing Jobs Melbourne | Careers at OneClick Solutions',
+  description: 'Join OneClick Solutions — we are hiring digital marketing professionals in Melbourne. Explore open roles in SEO, Google Ads, Social Media, and Content Marketing.',
+  keywords: ['digital marketing jobs Melbourne', 'marketing careers Australia', 'SEO jobs Melbourne', 'OneClick Solutions careers'],
   alternates: { canonical: 'https://oneclicksoultions.com.au/careers/' },
 };
 
