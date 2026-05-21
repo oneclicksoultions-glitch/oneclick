@@ -4,7 +4,7 @@ import ServicePageLayout from '@/components/ServicePageLayout';
 export const metadata: Metadata = {
   title: 'Content Marketing Agency Australia | SEO Content Services | OneClick Solutions',
   description: 'Build authority and generate leads with strategic content marketing. OneClick Solutions creates SEO blog posts, landing pages, ebooks & more for Australian businesses.',
-  keywords: ['content marketing agency Australia', 'SEO content writing Australia', 'blog writing services Australia', 'content strategy Australia'],
+  keywords: ['content marketing agency Australia'],
   alternates: { canonical: 'https://oneclicksoultions.com.au/services/content-marketing/' },
 };
 

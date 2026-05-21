@@ -4,7 +4,7 @@ import Navbar from '@/components/Navbar';
 export const metadata: Metadata = {
   title: 'Digital Marketing Agency Australia | OneClick Solutions',
   description: 'OneClick Solutions is Australia\'s results-driven digital marketing agency. SEO, Google Ads, Social Media, Web Design & more. Get a free strategy call today.',
-  keywords: ['digital marketing agency Australia', 'SEO agency Australia', 'Google Ads management Australia', 'social media marketing Australia'],
+  keywords: ['digital marketing agency Australia'],
   alternates: { canonical: 'https://oneclicksoultions.com.au/' },
 };
 import Hero from '@/components/Hero';

@@ -8,7 +8,7 @@ import Footer from '@/components/Footer';
 export const metadata: Metadata = {
   title: 'Digital Marketing Case Studies Australia | OneClick Solutions Portfolio',
   description: 'Real results for real Australian businesses. See how OneClick Solutions has driven 3x traffic, 180% revenue growth, and page-1 rankings across industries.',
-  keywords: ['digital marketing case studies Australia', 'SEO results Australia', 'marketing portfolio', 'OneClick Solutions results'],
+  keywords: ['digital marketing case studies Australia'],
   alternates: { canonical: 'https://oneclicksoultions.com.au/portfolio/' },
 };
 

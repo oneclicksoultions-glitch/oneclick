@@ -19,14 +19,7 @@ export const metadata: Metadata = {
   },
   description:
     'OneClick Solutions is a full-service digital marketing agency in Australia offering SEO, Google Ads, Social Media Marketing, Web Design, and more to grow your business online.',
-  keywords: [
-    'digital marketing Australia',
-    'SEO agency Australia',
-    'Google Ads management',
-    'social media marketing',
-    'web design Australia',
-    'OneClick Solutions',
-  ],
+  keywords: ['digital marketing agency Australia'],
   openGraph: {
     type: 'website',
     url: siteUrl + '/',

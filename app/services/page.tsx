@@ -7,7 +7,7 @@ import Footer from '@/components/Footer';
 export const metadata: Metadata = {
   title: 'Digital Marketing Services Australia | SEO, Ads, Social & More',
   description: 'Full-suite digital marketing services for Australian businesses — SEO, Google Ads, Social Media, Web Design, Email Marketing, Content, Analytics & App Marketing.',
-  keywords: ['digital marketing services Australia', 'SEO services', 'Google Ads Australia', 'social media management Australia'],
+  keywords: ['digital marketing services Australia'],
   alternates: { canonical: 'https://oneclicksoultions.com.au/services/' },
 };
 

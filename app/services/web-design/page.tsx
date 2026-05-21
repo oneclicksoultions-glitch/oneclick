@@ -4,7 +4,7 @@ import ServicePageLayout from '@/components/ServicePageLayout';
 export const metadata: Metadata = {
   title: 'Web Design Australia | Conversion-Optimised Websites | OneClick Solutions',
   description: 'Beautiful, fast, mobile-first websites built to convert. OneClick Solutions designs and develops SEO-ready websites for Australian businesses that generate real leads.',
-  keywords: ['web design Australia', 'website design Melbourne', 'web development Australia', 'conversion optimised web design'],
+  keywords: ['web design Australia'],
   alternates: { canonical: 'https://oneclicksoultions.com.au/services/web-design/' },
 };
 

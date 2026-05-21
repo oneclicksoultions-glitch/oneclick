@@ -8,7 +8,7 @@ import Footer from '@/components/Footer';
 export const metadata: Metadata = {
   title: 'Digital Marketing Agency Melbourne | About OneClick Solutions',
   description: 'Meet the team behind OneClick Solutions — Melbourne\'s trusted digital marketing agency with 10+ years experience, 500+ clients, and a passion for measurable results.',
-  keywords: ['digital marketing agency Melbourne', 'about OneClick Solutions', 'Australian digital marketing team'],
+  keywords: ['digital marketing agency Melbourne'],
   alternates: { canonical: 'https://oneclicksoultions.com.au/about/' },
 };
 

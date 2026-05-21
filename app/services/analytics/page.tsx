@@ -4,7 +4,7 @@ import ServicePageLayout from '@/components/ServicePageLayout';
 export const metadata: Metadata = {
   title: 'Marketing Analytics & Reporting Australia | GA4 Setup | OneClick Solutions',
   description: 'Make smarter marketing decisions with expert analytics & reporting. OneClick Solutions sets up GA4, conversion tracking, custom dashboards & monthly ROI reports for Australian businesses.',
-  keywords: ['marketing analytics Australia', 'Google Analytics setup Australia', 'GA4 setup Australia', 'marketing reporting agency'],
+  keywords: ['marketing analytics Australia'],
   alternates: { canonical: 'https://oneclicksoultions.com.au/services/analytics/' },
 };
 

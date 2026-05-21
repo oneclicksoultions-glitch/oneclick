@@ -4,7 +4,7 @@ import ServicePageLayout from '@/components/ServicePageLayout';
 export const metadata: Metadata = {
   title: 'Social Media Marketing Australia | Management Agency | OneClick Solutions',
   description: 'Grow your brand on Facebook, Instagram, LinkedIn & TikTok with OneClick Solutions. Expert social media strategy, content creation & paid social for Australian businesses.',
-  keywords: ['social media marketing Australia', 'social media management Australia', 'Facebook marketing Australia', 'Instagram marketing agency'],
+  keywords: ['social media marketing Australia'],
   alternates: { canonical: 'https://oneclicksoultions.com.au/services/social-media/' },
 };
 

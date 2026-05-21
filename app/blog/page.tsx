@@ -8,7 +8,7 @@ import Footer from '@/components/Footer';
 export const metadata: Metadata = {
   title: 'Digital Marketing Blog Australia | Tips, Strategies & Insights',
   description: 'Expert digital marketing tips, SEO strategies, Google Ads advice, and social media insights for Australian businesses. Updated regularly by the OneClick Solutions team.',
-  keywords: ['digital marketing blog Australia', 'SEO tips Australia', 'Google Ads advice', 'marketing strategies Australia'],
+  keywords: ['digital marketing blog Australia'],
   alternates: { canonical: 'https://oneclicksoultions.com.au/blog/' },
 };
 

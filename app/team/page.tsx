@@ -7,7 +7,7 @@ import Footer from '@/components/Footer';
 export const metadata: Metadata = {
   title: 'Digital Marketing Experts Melbourne | Meet Our Team | OneClick Solutions',
   description: 'Meet the digital marketing experts behind OneClick Solutions — SEO specialists, Google Ads managers, creatives, and strategists based in Melbourne, Australia.',
-  keywords: ['digital marketing experts Melbourne', 'OneClick Solutions team', 'digital marketing professionals Australia'],
+  keywords: ['digital marketing experts Melbourne'],
   alternates: { canonical: 'https://oneclicksoultions.com.au/team/' },
 };
 
