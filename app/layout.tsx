@@ -1,6 +1,7 @@
 import './globals.css';
 import type { Metadata } from 'next';
 import { Roboto } from 'next/font/google';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 const roboto = Roboto({
   subsets: ['latin'],
@@ -57,7 +58,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={roboto.className}>{children}</body>
+      <body className={roboto.className}>
+        {children}
+        <SpeedInsights />
+      </body>
     </html>
   );
 }
