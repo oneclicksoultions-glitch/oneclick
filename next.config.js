@@ -17,7 +17,7 @@ const securityHeaders = [
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
       "font-src 'self' https://fonts.gstatic.com",
       "img-src 'self' data: blob: https://images.pexels.com",
-      "connect-src 'self' https://formspree.io",
+      "connect-src 'self' https://formspree.io https://immsgipuunuslombgajy.supabase.co wss://immsgipuunuslombgajy.supabase.co",
       "frame-ancestors 'none'",
     ].join('; '),
   },
@@ -29,6 +29,10 @@ const nextConfig = {
   },
   images: { unoptimized: true },
   trailingSlash: true,
+  webpack: (config) => {
+    config.resolve.fallback = { ...config.resolve.fallback, net: false, tls: false, fs: false };
+    return config;
+  },
   async headers() {
     return [
       {

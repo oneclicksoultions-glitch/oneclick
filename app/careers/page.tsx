@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { ArrowRight, MapPin, Clock, Users } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import { supabaseAdmin } from '@/lib/supabase';
 
 export const metadata: Metadata = {
   title: 'Digital Marketing Jobs Melbourne | Careers at OneClick Solutions',
@@ -11,40 +12,7 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://oneclicksoultions.com.au/careers/' },
 };
 
-const openRoles = [
-  {
-    title: 'Senior SEO Specialist',
-    type: 'Full-time',
-    location: 'Melbourne / Hybrid',
-    department: 'SEO',
-    color: '#4285F4',
-    description: 'Lead technical and content SEO strategies for a portfolio of Australian clients. You will conduct audits, build link strategies, and mentor junior team members.',
-  },
-  {
-    title: 'Google Ads Manager',
-    type: 'Full-time',
-    location: 'Melbourne / Remote',
-    department: 'Paid Media',
-    color: '#EA4335',
-    description: 'Manage and optimise Google Ads campaigns across Search, Display, and Performance Max. You will own campaign strategy, budget pacing, and client reporting.',
-  },
-  {
-    title: 'Social Media Strategist',
-    type: 'Full-time',
-    location: 'Melbourne / Hybrid',
-    department: 'Social Media',
-    color: '#34A853',
-    description: 'Develop and execute organic and paid social strategies across Meta, TikTok, and LinkedIn for a diverse client base spanning retail, finance, and professional services.',
-  },
-  {
-    title: 'Content Writer',
-    type: 'Full-time / Part-time',
-    location: 'Remote',
-    department: 'Content',
-    color: '#FBBC04',
-    description: 'Create compelling, SEO-optimised long-form content, blog posts, and landing pages for Australian businesses across multiple industries.',
-  },
-];
+const ROLE_COLORS = ['#4285F4', '#EA4335', '#34A853', '#FBBC04'];
 
 const perks = [
   { title: 'Flexible Working', desc: 'Hybrid and remote options available across most roles.', color: '#4285F4' },
@@ -53,7 +21,14 @@ const perks = [
   { title: 'Competitive Pay', desc: 'Above-market salaries plus performance bonuses.', color: '#FBBC04' },
 ];
 
-export default function CareersPage() {
+export default async function CareersPage() {
+  const { data: jobData } = await supabaseAdmin
+    .from('job_listings')
+    .select('*')
+    .eq('active', true)
+    .order('created_at', { ascending: false });
+  const openRoles = jobData ?? [];
+
   return (
     <>
       <Navbar />
@@ -93,16 +68,16 @@ export default function CareersPage() {
                 Open <span style={{ color: '#4285F4' }}>Positions</span>
               </h2>
               <div className="space-y-4">
-                {openRoles.map((role) => (
-                  <div key={role.title} className="bg-white rounded-2xl border border-gray-200 p-6 hover:shadow-lg transition-shadow duration-300">
+                {openRoles.map((role, i) => (
+                  <div key={role.id} className="bg-white rounded-2xl border border-gray-200 p-6 hover:shadow-lg transition-shadow duration-300">
                     <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                       <div className="flex-1">
                         <div className="flex items-center gap-3 mb-2">
                           <span
                             className="text-xs font-500 text-white px-3 py-1 rounded-full"
-                            style={{ backgroundColor: role.color }}
+                            style={{ backgroundColor: ROLE_COLORS[i % ROLE_COLORS.length] }}
                           >
-                            {role.department}
+                            {role.type}
                           </span>
                           <span className="text-xs text-gray-500 flex items-center gap-1">
                             <Clock className="h-3 w-3" /> {role.type}
@@ -117,7 +92,7 @@ export default function CareersPage() {
                       <Link
                         href="/contact/"
                         className="inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-500 text-white rounded-xl hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 group shrink-0"
-                        style={{ backgroundColor: role.color }}
+                        style={{ backgroundColor: ROLE_COLORS[openRoles.indexOf(role) % ROLE_COLORS.length] }}
                       >
                         Apply Now
                         <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />

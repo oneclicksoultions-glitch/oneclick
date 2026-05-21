@@ -1,63 +1,17 @@
 import { Star } from 'lucide-react';
+import { supabaseAdmin } from '@/lib/supabase';
 
-const testimonials = [
-  {
-    name: 'Sarah Mitchell',
-    role: 'CEO, Mitchell Home Solutions',
-    location: 'Sydney, NSW',
-    text: 'OneClick Solutions transformed our online presence. Within 6 months we tripled our organic traffic and our leads doubled. Their team is responsive, transparent and genuinely invested in our success.',
-    rating: 5,
-    initials: 'SM',
-    color: '#4285F4',
-  },
-  {
-    name: 'James Kowalski',
-    role: 'Director, ProFit Gym Network',
-    location: 'Melbourne, VIC',
-    text: 'The Google Ads campaigns they run for us generate consistent, high-quality leads at a cost per acquisition we are very happy with. Best marketing investment we have made.',
-    rating: 5,
-    initials: 'JK',
-    color: '#EA4335',
-  },
-  {
-    name: 'Priya Sharma',
-    role: 'Founder, Bloom Skincare',
-    location: 'Brisbane, QLD',
-    text: 'Our social media engagement went through the roof. OneClick created a brand voice that resonates with our audience and our e-commerce revenue grew 180% year-on-year.',
-    rating: 5,
-    initials: 'PS',
-    color: '#34A853',
-  },
-  {
-    name: 'Tom Nguyen',
-    role: 'Marketing Manager, Apex Law Group',
-    location: 'Perth, WA',
-    text: 'Professional, knowledgeable and results-focused. Our SEO rankings improved dramatically and we now rank on page one for all our key practice area keywords.',
-    rating: 5,
-    initials: 'TN',
-    color: '#FBBC04',
-  },
-  {
-    name: 'Emma Davidson',
-    role: 'Owner, Davidson Real Estate',
-    location: 'Adelaide, SA',
-    text: 'From website design to ongoing SEO, OneClick handles everything. The reporting dashboard gives us full visibility and the team is always proactive with recommendations.',
-    rating: 5,
-    initials: 'ED',
-    color: '#4285F4',
-  },
-  {
-    name: 'Michael Torres',
-    role: 'Operations Director, Torres Constructions',
-    location: 'Gold Coast, QLD',
-    text: 'We went from barely visible online to dominating our local market. OneClick Solutions delivered on every promise and the ROI speaks for itself.',
-    rating: 5,
-    initials: 'MT',
-    color: '#EA4335',
-  },
-];
+async function getTestimonials() {
+  const { data } = await supabaseAdmin
+    .from('testimonials')
+    .select('*')
+    .eq('active', true)
+    .order('sort_order');
+  return data ?? [];
+}
 
-export default function Testimonials() {
+export default async function Testimonials() {
+  const testimonials = await getTestimonials();
   return (
     <section className="py-20 lg:py-28 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

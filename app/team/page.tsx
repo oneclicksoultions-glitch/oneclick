@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import { supabaseAdmin } from '@/lib/supabase';
 
 export const metadata: Metadata = {
   title: 'Digital Marketing Experts Melbourne | Meet Our Team | OneClick Solutions',
@@ -11,18 +12,13 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://oneclicksoultions.com.au/team/' },
 };
 
-const team = [
-  { name: 'David Chen', role: 'Founder & CEO', initials: 'DC', color: '#4285F4', bio: 'Over 15 years of experience in digital marketing, David founded OneClick Solutions with a vision to make world-class digital marketing accessible to Australian businesses.' },
-  { name: 'Rachel Morrison', role: 'Head of SEO', initials: 'RM', color: '#EA4335', bio: 'Rachel leads our SEO division with 10+ years of experience driving organic growth for clients across e-commerce, legal, and professional services sectors.' },
-  { name: 'Aiden Patel', role: 'PPC Director', initials: 'AP', color: '#34A853', bio: 'Aiden manages millions in Google Ads spend annually, consistently delivering below-industry cost-per-lead across highly competitive verticals.' },
-  { name: 'Sophie Williams', role: 'Creative Director', initials: 'SW', color: '#FBBC04', bio: 'Sophie brings creative strategy and brand storytelling together, overseeing all design, content, and social media creative output for our client portfolio.' },
-  { name: 'Marcus Lee', role: 'Web Development Lead', initials: 'ML', color: '#4285F4', bio: 'Marcus heads our web development team, delivering fast, conversion-optimised websites built for both performance and search engine visibility.' },
-  { name: 'Emily Zhang', role: 'Content Strategist', initials: 'EZ', color: '#EA4335', bio: 'Emily creates content strategies that rank, engage, and convert. She specialises in long-form SEO content and email marketing campaigns.' },
-  { name: 'James Nguyen', role: 'Analytics Manager', initials: 'JN', color: '#34A853', bio: 'James transforms raw data into actionable insights, building custom dashboards and tracking frameworks that keep every campaign accountable.' },
-  { name: 'Claire Thompson', role: 'Client Success Manager', initials: 'CT', color: '#FBBC04', bio: 'Claire ensures every client gets maximum value from their partnership with OneClick Solutions, managing relationships and coordinating cross-team delivery.' },
-];
-
-export default function TeamPage() {
+export default async function TeamPage() {
+  const { data: teamData } = await supabaseAdmin
+    .from('team_members')
+    .select('*')
+    .eq('active', true)
+    .order('sort_order');
+  const team = teamData ?? [];
   return (
     <>
       <Navbar />

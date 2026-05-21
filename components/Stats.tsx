@@ -1,13 +1,14 @@
-const stats = [
-  { value: '500+', label: 'Clients Across Australia', color: '#4285F4' },
-  { value: '$50M+', label: 'Ad Spend Managed', color: '#EA4335' },
-  { value: '247%', label: 'Average Traffic Increase', color: '#FBBC04' },
-  { value: '98%', label: 'Client Retention Rate', color: '#34A853' },
-  { value: '10+', label: 'Years of Experience', color: '#4285F4' },
-  { value: '15+', label: 'Industries Served', color: '#EA4335' },
-];
+import { supabaseAdmin } from '@/lib/supabase';
 
-export default function Stats() {
+const COLORS = ['#4285F4', '#EA4335', '#FBBC04', '#34A853', '#4285F4', '#EA4335'];
+
+async function getStats() {
+  const { data } = await supabaseAdmin.from('company_stats').select('*').order('sort_order');
+  return (data ?? []).map((s: { value: string; label: string }, i: number) => ({ ...s, color: COLORS[i % COLORS.length] }));
+}
+
+export default async function Stats() {
+  const stats = await getStats();
   return (
     <section className="py-16 lg:py-20 bg-white border-y border-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

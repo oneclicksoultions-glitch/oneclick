@@ -19,18 +19,29 @@ export default function ContactPage() {
     const form = e.currentTarget;
     const data = new FormData(form);
 
+    const payload = {
+      firstName: data.get('firstName') as string,
+      lastName: data.get('lastName') as string,
+      email: data.get('email') as string,
+      phone: data.get('phone') as string,
+      service: data.get('service') as string,
+      budget: data.get('budget') as string,
+      message: data.get('message') as string,
+    };
+
     try {
-      const res = await fetch('https://formspree.io/f/xzzpgodq', {
+      const res = await fetch('/api/contact', {
         method: 'POST',
-        body: data,
-        headers: { Accept: 'application/json' },
+        body: JSON.stringify(payload),
+        headers: { 'Content-Type': 'application/json' },
       });
 
       if (res.ok) {
         setSubmitted(true);
         form.reset();
       } else {
-        setError('Something went wrong. Please try again or email us directly.');
+        const json = await res.json().catch(() => ({}));
+        setError(json.error || 'Something went wrong. Please try again or email us directly.');
       }
     } catch {
       setError('Network error. Please check your connection and try again.');

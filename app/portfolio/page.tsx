@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import { supabaseAdmin } from '@/lib/supabase';
 
 export const metadata: Metadata = {
   title: 'Digital Marketing Case Studies Australia | OneClick Solutions Portfolio',
@@ -12,58 +13,13 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://oneclicksoultions.com.au/portfolio/' },
 };
 
-const projects = [
-  {
-    title: 'Mitchell Home Solutions',
-    industry: 'Home Services',
-    services: ['SEO', 'Google Ads', 'Web Design'],
-    result: '3x organic traffic, 2x leads in 6 months',
-    color: '#4285F4',
-    image: 'https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?auto=compress&cs=tinysrgb&w=600',
-  },
-  {
-    title: 'ProFit Gym Network',
-    industry: 'Fitness',
-    services: ['Google Ads', 'Social Media'],
-    result: '45% reduction in cost per lead',
-    color: '#EA4335',
-    image: 'https://images.pexels.com/photos/1954524/pexels-photo-1954524.jpeg?auto=compress&cs=tinysrgb&w=600',
-  },
-  {
-    title: 'Bloom Skincare',
-    industry: 'E-Commerce / Beauty',
-    services: ['Social Media', 'Email Marketing', 'SEO'],
-    result: '180% year-on-year revenue growth',
-    color: '#34A853',
-    image: 'https://images.pexels.com/photos/3685530/pexels-photo-3685530.jpeg?auto=compress&cs=tinysrgb&w=600',
-  },
-  {
-    title: 'Apex Law Group',
-    industry: 'Legal',
-    services: ['SEO', 'Content Marketing'],
-    result: 'Page 1 rankings for all practice areas',
-    color: '#FBBC04',
-    image: 'https://images.pexels.com/photos/5668859/pexels-photo-5668859.jpeg?auto=compress&cs=tinysrgb&w=600',
-  },
-  {
-    title: 'Davidson Real Estate',
-    industry: 'Real Estate',
-    services: ['Web Design', 'SEO', 'Social Media'],
-    result: 'Dominated local search in 4 months',
-    color: '#4285F4',
-    image: 'https://images.pexels.com/photos/259588/pexels-photo-259588.jpeg?auto=compress&cs=tinysrgb&w=600',
-  },
-  {
-    title: 'Torres Constructions',
-    industry: 'Construction',
-    services: ['SEO', 'Google Ads'],
-    result: 'From invisible to local market leader',
-    color: '#EA4335',
-    image: 'https://images.pexels.com/photos/1763716/pexels-photo-1763716.jpeg?auto=compress&cs=tinysrgb&w=600',
-  },
-];
-
-export default function PortfolioPage() {
+export default async function PortfolioPage() {
+  const { data: projData } = await supabaseAdmin
+    .from('portfolio_items')
+    .select('*')
+    .eq('active', true)
+    .order('sort_order');
+  const projects = projData ?? [];
   return (
     <>
       <Navbar />
@@ -90,7 +46,7 @@ export default function PortfolioPage() {
                 <div key={p.title} className="group bg-white rounded-2xl border border-gray-100 overflow-hidden hover:shadow-xl transition-shadow duration-300">
                   <div className="relative h-48 overflow-hidden">
                     <Image
-                      src={p.image}
+                      src={p.image_url || 'https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?auto=compress&cs=tinysrgb&w=600'}
                       alt={`${p.title} case study`}
                       width={600}
                       height={192}
@@ -108,7 +64,7 @@ export default function PortfolioPage() {
                   <div className="p-6">
                     <h3 className="text-lg font-700 text-gray-900 mb-2">{p.title}</h3>
                     <div className="flex flex-wrap gap-1.5 mb-3">
-                      {p.services.map((s) => (
+                      {(p.services as string[]).map((s: string) => (
                         <span key={s} className="text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded">
                           {s}
                         </span>

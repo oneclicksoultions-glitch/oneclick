@@ -1,0 +1,23 @@
+import { NextRequest, NextResponse } from 'next/server';
+import { supabaseAdmin } from '@/lib/supabase';
+import { getAdminSession } from '@/lib/admin-auth';
+
+async function auth() {
+  const session = await getAdminSession();
+  if (!session) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  return null;
+}
+
+export async function GET() {
+  const denied = await auth(); if (denied) return denied;
+  const { data } = await supabaseAdmin.from('hero').select('*').eq('id', 1).single();
+  return NextResponse.json(data);
+}
+
+export async function PUT(req: NextRequest) {
+  const denied = await auth(); if (denied) return denied;
+  const body = await req.json();
+  const { error } = await supabaseAdmin.from('hero').update(body).eq('id', 1);
+  if (error) return NextResponse.json({ error: error.message }, { status: 500 });
+  return NextResponse.json({ success: true });
+}
