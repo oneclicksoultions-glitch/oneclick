@@ -39,6 +39,15 @@ const nextConfig = {
         source: '/(.*)',
         headers: securityHeaders,
       },
+      {
+        source: '/',
+        headers: [
+          {
+            key: 'Link',
+            value: '</sitemap.xml>; rel="sitemap", </robots.txt>; rel="robots"',
+          },
+        ],
+      },
     ];
   },
 };
