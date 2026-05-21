@@ -1,12 +1,14 @@
+import type { Metadata } from 'next';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+
+export const metadata: Metadata = {
+  alternates: { canonical: 'https://oneclicksoultions.com.au/privacy-policy/' },
+};
 
 export default function PrivacyPolicyPage() {
   return (
     <>
-      <head>
-        <link rel="canonical" href="https://oneclicksoultions.com.au/privacy-policy/" />
-      </head>
       <Navbar />
       <main className="pt-28 pb-16 lg:pt-36 lg:pb-24 bg-white">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">

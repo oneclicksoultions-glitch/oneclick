@@ -26,9 +26,6 @@ export const metadata: Metadata = {
     'web design Australia',
     'OneClick Solutions',
   ],
-  alternates: {
-    canonical: siteUrl + '/',
-  },
   openGraph: {
     type: 'website',
     url: siteUrl + '/',
@@ -60,9 +57,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <head>
-        <link rel="canonical" href={siteUrl + '/'} />
-      </head>
       <body className={roboto.className}>{children}</body>
     </html>
   );

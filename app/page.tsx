@@ -1,4 +1,9 @@
+import type { Metadata } from 'next';
 import Navbar from '@/components/Navbar';
+
+export const metadata: Metadata = {
+  alternates: { canonical: 'https://oneclicksoultions.com.au/' },
+};
 import Hero from '@/components/Hero';
 import Stats from '@/components/Stats';
 import Services from '@/components/Services';

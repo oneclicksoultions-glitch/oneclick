@@ -1,7 +1,12 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Search, MousePointerClick, Share2, Globe, FileText, Mail, ChartBar as BarChart2, Smartphone, ArrowRight } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+
+export const metadata: Metadata = {
+  alternates: { canonical: 'https://oneclicksoultions.com.au/services/' },
+};
 
 const services = [
   {
@@ -73,9 +78,6 @@ const services = [
 export default function ServicesPage() {
   return (
     <>
-      <head>
-        <link rel="canonical" href="https://oneclicksoultions.com.au/services/" />
-      </head>
       <Navbar />
       <main>
         <section className="pt-28 pb-16 lg:pt-36 lg:pb-24 bg-white">
