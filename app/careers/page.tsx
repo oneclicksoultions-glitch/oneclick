@@ -71,6 +71,9 @@ export default function CareersPage() {
             </div>
 
             {/* Perks */}
+            <h2 className="text-2xl sm:text-3xl font-700 text-gray-900 mb-8 text-center">
+              Why Work at <span style={{ color: '#4285F4' }}>OneClick Solutions</span>
+            </h2>
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
               {perks.map((perk) => (
                 <div key={perk.title} className="bg-gray-50 rounded-2xl p-6 border border-gray-100">

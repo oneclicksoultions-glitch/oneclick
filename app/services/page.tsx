@@ -95,7 +95,7 @@ export default function ServicesPage() {
               </p>
             </div>
 
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
               {services.map((service) => {
                 const Icon = service.icon;
                 return (
@@ -125,6 +125,80 @@ export default function ServicesPage() {
                 );
               })}
             </div>
+          </div>
+        </section>
+
+        {/* Why choose us */}
+        <section className="py-16 lg:py-24 bg-gray-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 className="text-2xl sm:text-3xl font-700 text-gray-900 mb-4">
+                Why Australian Businesses Choose <span style={{ color: '#4285F4' }}>OneClick Solutions</span>
+              </h2>
+              <p className="text-gray-500 max-w-3xl mx-auto leading-relaxed">
+                We are a full-service digital marketing agency based in Melbourne, Australia. Our team of specialists covers every aspect of online marketing — from search engine optimisation and paid advertising to social media management, web design, and data analytics. Whether you are a small business looking to establish your online presence or a large enterprise aiming to dominate your market, we build strategies around your specific goals and budget.
+              </p>
+            </div>
+            <div className="grid sm:grid-cols-3 gap-8 text-center">
+              <div>
+                <div className="text-4xl font-700 mb-2" style={{ color: '#4285F4' }}>500+</div>
+                <div className="text-base font-700 text-gray-900 mb-1">Australian Clients</div>
+                <p className="text-sm text-gray-500">Businesses across retail, legal, health, construction and more trust us to grow their revenue online.</p>
+              </div>
+              <div>
+                <div className="text-4xl font-700 mb-2" style={{ color: '#EA4335' }}>10+</div>
+                <div className="text-base font-700 text-gray-900 mb-1">Years of Experience</div>
+                <p className="text-sm text-gray-500">A decade of hands-on experience across every major digital marketing channel and industry vertical.</p>
+              </div>
+              <div>
+                <div className="text-4xl font-700 mb-2" style={{ color: '#34A853' }}>3x</div>
+                <div className="text-base font-700 text-gray-900 mb-1">Average Client ROI</div>
+                <p className="text-sm text-gray-500">Our campaigns consistently deliver measurable returns — tracked, reported, and continuously optimised.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* How it works */}
+        <section className="py-16 lg:py-24 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-2xl sm:text-3xl font-700 text-gray-900 mb-12 text-center">
+              How We <span style={{ color: '#4285F4' }}>Work</span>
+            </h2>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+              {[
+                { step: '01', title: 'Discovery & Audit', desc: 'We start with a deep dive into your business, competitors, and current digital performance to identify the biggest opportunities.' },
+                { step: '02', title: 'Strategy & Planning', desc: 'We build a tailored, multi-channel strategy with clear goals, timelines, and budget allocations aligned to your business objectives.' },
+                { step: '03', title: 'Execution & Launch', desc: 'Our specialists execute every element — campaigns, content, technical fixes, and creative — with precision and speed.' },
+                { step: '04', title: 'Optimise & Report', desc: 'We track every metric, report transparently, and continuously optimise to improve performance and maximise your return on investment.' },
+              ].map((item) => (
+                <div key={item.step} className="text-center">
+                  <div className="text-5xl font-700 mb-3" style={{ color: '#4285F4', opacity: 0.15 }}>{item.step}</div>
+                  <h3 className="text-base font-700 text-gray-900 mb-2">{item.title}</h3>
+                  <p className="text-sm text-gray-500 leading-relaxed">{item.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* CTA */}
+        <section className="py-16 lg:py-20 bg-gray-50">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 className="text-2xl sm:text-3xl font-700 text-gray-900 mb-4">
+              Ready to Grow Your Business Online?
+            </h2>
+            <p className="text-gray-500 mb-8 max-w-xl mx-auto">
+              Book a free 30-minute strategy consultation with our team. No obligation, no sales pitch — just honest advice on what will move the needle for your business.
+            </p>
+            <Link
+              href="/contact/"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-500 text-white rounded-xl hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 group"
+              style={{ backgroundColor: '#4285F4' }}
+            >
+              Get Free Strategy Consultation
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </Link>
           </div>
         </section>
       </main>

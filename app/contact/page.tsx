@@ -223,6 +223,57 @@ export default function ContactPage() {
             </div>
           </div>
         </section>
+        {/* What to expect */}
+        <section className="py-16 lg:py-20 bg-gray-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-2xl sm:text-3xl font-700 text-gray-900 mb-4 text-center">
+              What Happens <span style={{ color: '#4285F4' }}>Next</span>
+            </h2>
+            <p className="text-gray-500 text-center max-w-2xl mx-auto mb-12 leading-relaxed">
+              We make it easy to get started. After you submit your enquiry, here is exactly what you can expect from our team.
+            </p>
+            <div className="grid sm:grid-cols-3 gap-8">
+              {[
+                { step: '1', title: 'We Review Your Enquiry', desc: 'Our team carefully reads every submission. We research your business, competitors, and current online presence before we respond so we can give you genuinely useful advice — not a generic pitch.', color: '#4285F4' },
+                { step: '2', title: 'Free Strategy Call', desc: 'We schedule a no-obligation 30-minute call to understand your goals, challenges, and budget. You will leave with clear, actionable recommendations regardless of whether you choose to work with us.', color: '#EA4335' },
+                { step: '3', title: 'Custom Proposal', desc: 'If there is a fit, we put together a tailored proposal outlining the recommended services, strategy, timeline, and investment. No lock-in contracts, no hidden fees — full transparency from day one.', color: '#34A853' },
+              ].map((item) => (
+                <div key={item.step} className="bg-white rounded-2xl p-8 border border-gray-100 text-center">
+                  <div
+                    className="w-12 h-12 rounded-full flex items-center justify-center text-white text-lg font-700 mx-auto mb-4"
+                    style={{ backgroundColor: item.color }}
+                  >
+                    {item.step}
+                  </div>
+                  <h3 className="text-base font-700 text-gray-900 mb-3">{item.title}</h3>
+                  <p className="text-sm text-gray-500 leading-relaxed">{item.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ */}
+        <section className="py-16 lg:py-20 bg-white">
+          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-2xl sm:text-3xl font-700 text-gray-900 mb-10 text-center">
+              Frequently Asked <span style={{ color: '#4285F4' }}>Questions</span>
+            </h2>
+            <div className="space-y-4">
+              {[
+                { q: 'How quickly will you respond to my enquiry?', a: 'We respond to all enquiries within one business day. If you submit during business hours (Monday to Friday, 9am–6pm AEST), you will typically hear from us within a few hours.' },
+                { q: 'Is the strategy consultation really free?', a: 'Yes, completely free and with no obligation. We believe in earning your trust by providing genuine value upfront. The consultation is a real working session — not a sales call.' },
+                { q: 'Do you work with small businesses or only large companies?', a: 'We work with businesses of all sizes across Australia. Our services are scalable, so whether your monthly marketing budget is $1,000 or $50,000, we can build a strategy that makes sense for your situation.' },
+                { q: 'Which digital marketing services do you offer?', a: 'We offer a full suite of digital marketing services including SEO, Google Ads, Social Media Marketing, Web Design, Content Marketing, Email Marketing, Analytics & Reporting, and App Marketing. Most clients use a combination of services for the best results.' },
+              ].map((faq) => (
+                <div key={faq.q} className="bg-gray-50 rounded-xl p-6 border border-gray-100">
+                  <h3 className="text-base font-700 text-gray-900 mb-2">{faq.q}</h3>
+                  <p className="text-sm text-gray-500 leading-relaxed">{faq.a}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
       </main>
       <Footer />
     </>
