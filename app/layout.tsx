@@ -157,6 +157,8 @@ export default function RootLayout({
             __html: `(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","wuwaf9h56y");`,
           }}
         />
+        {/* Ahrefs Analytics */}
+        <script src="https://analytics.ahrefs.com/analytics.js" data-key="j7OmZyG/GitK3PnPraAhSQ" async />
       </head>
       <body className={roboto.className}>
         {/* Google Tag Manager (noscript) */}
