@@ -3,10 +3,10 @@
 import { useEffect, useState } from 'react';
 import AdminShell from '@/components/admin/AdminShell';
 import AdminModal from '@/components/admin/AdminModal';
-import { Plus, Pencil, Trash2, ToggleLeft, ToggleRight } from 'lucide-react';
+import { Plus, Pencil, Trash2, ToggleLeft, ToggleRight, ExternalLink } from 'lucide-react';
 
-type T = { id: number; title: string; excerpt: string; category: string; author: string; read_time: string; color: string; image_url: string; slug: string; published: boolean };
-const EMPTY: Omit<T, 'id'> = { title: '', excerpt: '', category: '', author: '', read_time: '5 min read', color: '#4285F4', image_url: '', slug: '', published: true };
+type T = { id: number; title: string; excerpt: string; content: string; category: string; author: string; read_time: string; color: string; image_url: string; slug: string; published: boolean };
+const EMPTY: Omit<T, 'id'> = { title: '', excerpt: '', content: '', category: '', author: '', read_time: '5 min read', color: '#4285F4', image_url: '', slug: '', published: true };
 
 export default function BlogAdmin() {
   const [items, setItems] = useState<T[]>([]);
@@ -18,7 +18,10 @@ export default function BlogAdmin() {
   useEffect(() => { load(); }, []);
 
   function openAdd() { setForm(EMPTY); setModal('add'); }
-  function openEdit(t: T) { setForm({ title: t.title, excerpt: t.excerpt, category: t.category, author: t.author, read_time: t.read_time, color: t.color, image_url: t.image_url || '', slug: t.slug, published: t.published }); setModal(t); }
+  function openEdit(t: T) {
+    setForm({ title: t.title, excerpt: t.excerpt, content: t.content || '', category: t.category, author: t.author, read_time: t.read_time, color: t.color, image_url: t.image_url || '', slug: t.slug, published: t.published });
+    setModal(t);
+  }
 
   async function save() {
     setSaving(true);
@@ -63,8 +66,9 @@ export default function BlogAdmin() {
                   <td className="px-5 py-3 text-gray-500 hidden md:table-cell">{t.category}</td>
                   <td className="px-5 py-3 text-gray-500 hidden lg:table-cell">{t.author}</td>
                   <td className="px-5 py-3"><button onClick={() => toggle(t)} className={t.published ? 'text-green-500' : 'text-gray-300'}>{t.published ? <ToggleRight className="h-5 w-5" /> : <ToggleLeft className="h-5 w-5" />}</button></td>
-                  <td className="px-5 py-3 text-right">
-                    <button onClick={() => openEdit(t)} className="p-1.5 text-gray-400 hover:text-blue-600 mr-1"><Pencil className="h-4 w-4" /></button>
+                  <td className="px-5 py-3 text-right flex items-center justify-end gap-0.5">
+                    {t.slug && <a href={`/blog/${t.slug}/`} target="_blank" rel="noopener noreferrer" className="p-1.5 text-gray-400 hover:text-green-600"><ExternalLink className="h-4 w-4" /></a>}
+                    <button onClick={() => openEdit(t)} className="p-1.5 text-gray-400 hover:text-blue-600"><Pencil className="h-4 w-4" /></button>
                     <button onClick={() => del(t.id)} className="p-1.5 text-gray-400 hover:text-red-600"><Trash2 className="h-4 w-4" /></button>
                   </td>
                 </tr>
@@ -75,18 +79,36 @@ export default function BlogAdmin() {
 
         {modal && (
           <AdminModal title={modal === 'add' ? 'Add Blog Post' : 'Edit Blog Post'} onClose={() => setModal(null)}>
-            {F('title', 'Title')} {F('excerpt', 'Excerpt', 3)} {F('category', 'Category')} {F('author', 'Author')} {F('read_time', 'Read Time')} {F('slug', 'URL Slug (e.g. my-post-title)')} {F('image_url', 'Image URL (optional)')}
+            {F('title', 'Title')}
+            {F('slug', 'URL Slug (e.g. seo-tips-for-small-business)')}
+            {F('excerpt', 'Excerpt (shown on listing page)', 3)}
             <div className="mb-4">
-              <label className="block text-sm font-medium text-gray-700 mb-1">Color</label>
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                Full Content <span className="text-gray-400 font-normal">(HTML — use &lt;h2&gt;, &lt;p&gt;, &lt;ul&gt;, &lt;strong&gt; etc.)</span>
+              </label>
+              <textarea
+                rows={12}
+                value={form.content}
+                onChange={e => setForm(p => ({ ...p, content: e.target.value }))}
+                className="w-full px-3 py-2 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 resize-y font-mono"
+                placeholder="<h2>Introduction</h2><p>Your article content here...</p>"
+              />
+            </div>
+            {F('category', 'Category')}
+            {F('author', 'Author')}
+            {F('read_time', 'Read Time (e.g. 5 min read)')}
+            {F('image_url', 'Featured Image URL')}
+            <div className="mb-4">
+              <label className="block text-sm font-medium text-gray-700 mb-1">Category Badge Color</label>
               <input type="color" value={form.color} onChange={e => setForm(p => ({ ...p, color: e.target.value }))} className="h-10 w-full rounded-xl border border-gray-200 cursor-pointer" />
             </div>
             <div className="mb-4 flex items-center gap-2">
               <input type="checkbox" id="pub" checked={form.published} onChange={e => setForm(p => ({ ...p, published: e.target.checked }))} className="rounded" />
-              <label htmlFor="pub" className="text-sm text-gray-700">Published</label>
+              <label htmlFor="pub" className="text-sm text-gray-700">Published (visible on site)</label>
             </div>
             <div className="flex gap-3 pt-2">
               <button onClick={() => setModal(null)} className="flex-1 py-2.5 rounded-xl border border-gray-200 text-sm">Cancel</button>
-              <button onClick={save} disabled={saving} className="flex-1 py-2.5 rounded-xl text-white text-sm font-medium disabled:opacity-60" style={{ backgroundColor: '#4285F4' }}>{saving ? 'Saving...' : 'Save'}</button>
+              <button onClick={save} disabled={saving} className="flex-1 py-2.5 rounded-xl text-white text-sm font-medium disabled:opacity-60" style={{ backgroundColor: '#4285F4' }}>{saving ? 'Saving...' : 'Save Post'}</button>
             </div>
           </AdminModal>
         )}

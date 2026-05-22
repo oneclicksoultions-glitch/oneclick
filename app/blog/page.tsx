@@ -37,7 +37,8 @@ export default async function BlogPage() {
 
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {posts.map((post) => (
-                <article key={post.title} className="group bg-white rounded-2xl border border-gray-100 overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                <Link key={post.slug || post.title} href={post.slug ? `/blog/${post.slug}/` : '/blog/'}>
+                <article className="group bg-white rounded-2xl border border-gray-100 overflow-hidden hover:shadow-xl transition-shadow duration-300 h-full">
                   <div className="relative h-44 overflow-hidden">
                     <Image
                       src={post.image_url || 'https://images.pexels.com/photos/270348/pexels-photo-270348.jpeg?auto=compress&cs=tinysrgb&w=600'}
@@ -74,6 +75,7 @@ export default async function BlogPage() {
                     </div>
                   </div>
                 </article>
+                </Link>
               ))}
             </div>
           </div>
