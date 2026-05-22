@@ -14,6 +14,7 @@ const services = [
   { label: 'Email Marketing', href: '/services/email-marketing/' },
   { label: 'Analytics & Reporting', href: '/services/analytics/' },
   { label: 'App Marketing', href: '/services/app-marketing/' },
+  { label: 'Local SEO', href: '/services/local-seo/' },
 ];
 
 const navLinks = [

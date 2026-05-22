@@ -8,6 +8,9 @@ const services = [
   { label: 'Web Design', href: '/services/web-design/' },
   { label: 'Content Marketing', href: '/services/content-marketing/' },
   { label: 'Email Marketing', href: '/services/email-marketing/' },
+  { label: 'Analytics & Reporting', href: '/services/analytics/' },
+  { label: 'App Marketing', href: '/services/app-marketing/' },
+  { label: 'Local SEO', href: '/services/local-seo/' },
 ];
 
 const company = [
